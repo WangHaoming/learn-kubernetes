@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  labels:
+    app: flask-web
+spec:
+  # Maintain 2 replicas for high availability
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: flask-web
+  template:
+    metadata:
+      labels:
+        app: flask-web
+    spec:
+      containers:
+      - name: flask-container
+        # Using the image you pushed to Docker Hub
+        image: wanghaoming/flask-simple-app:v1.0
+        ports:
+        # The port the Flask app listens on inside the container
+        - containerPort: 5000 
+

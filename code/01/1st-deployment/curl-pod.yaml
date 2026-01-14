@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: connectivity-test-pod
+  labels:
+    purpose: manual-testing
+spec:
+  containers:
+  - name: curl-container
+    # Using a lightweight image with curl pre-installed
+    image: curlimages/curl
+    # Keep the container alive by running a sleep command
+    command: ["sleep", "3600"]
+  # Ensure the pod is not restarted automatically if it finishes its task
+  restartPolicy: Never
