@@ -1,4 +1,4 @@
-build a image 
+Output: build a image 
 ```
 docker build -t flask-simple-app .
 
@@ -34,4 +34,9 @@ sudo sh get-docker.sh
 
 ```
 
+continuously access the web server
 
+```
+watch -n 1 curl http://localhost:8080
+while true; do echo -n "$(date) - "; curl http://localhost:8080; printf "\n"; sleep 1; done   
+```
